@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import connect from './modules/connect'
 
 class App extends Component {
   state = {
@@ -8,11 +9,11 @@ class App extends Component {
   componentWillReceiveProps(props){
     console.log(props.location.pathname)
   }
-  // checkout(props){
-  //   //判断是否要登陆
-  //   // if()
+  checkout(props){
+    //判断是否要登陆
+    // if()
 
-  // }
+  }
   render() {
     return (
       <div className="App">
@@ -22,4 +23,4 @@ class App extends Component {
   }
 }
 
-export default <withRouter>App</withRouter>;
+export default <withRouter>connect(<App/>)</withRouter>;
