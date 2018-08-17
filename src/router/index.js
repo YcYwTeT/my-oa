@@ -4,9 +4,11 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import App from '../App';
 
 //路由加载路径
-import Home from '../pages/Home';
 import Login from '../pages/Login';
+import Admin from '../Admin';
+import connect from '../modules/connect'
 
+import RouterAll from './Routers';
 
 export default class extends Component{
     render(){
@@ -14,8 +16,17 @@ export default class extends Component{
             <Router>
                 <App>
                     <Switch>
-                        <Route path="/" component={Home} exact></Route>
                         <Route path="/login" component={Login}></Route>
+                        <Route path="/" render = {() => {
+                            return (
+                                <Admin>
+                                    <Switch>
+                                        <RouterAll></RouterAll>
+                                    </Switch>
+                                </Admin>
+                            )
+                        }}>
+                        </Route>
                     </Switch>
                 </App>
             </Router>

@@ -1,11 +1,6 @@
-
 import React, { Component } from 'react';
-import './index.scss'
-import { Layout, Menu, Icon, Breadcrumb } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
-const SubMenu = Menu.SubMenu;
 
-class Home extends React.Component {
+class Myget extends React.Component {
   state = {
     collapsed: false,
   };
@@ -18,11 +13,11 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        Home
+        Myget
       </div>
     )
   }
 }
   
 
-export default Home;
+export default Myget;

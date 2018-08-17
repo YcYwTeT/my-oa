@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
+import connect from '../src/modules/connect';
 import { withRouter } from 'react-router-dom';
-import connect from './modules/connect'
 
 class App extends Component {
-  state = {
-    needLogin: []
+  constructor(props){
+    super(props);
+    this.checkout = this.checkout.bind(this)
   }
   componentWillReceiveProps(props){
-    console.log(props.location.pathname)
+    if(props.location.pathname !== this.props.location.pathname){
+      this.checkout(props);
+    }
   }
   checkout(props){
     //判断是否要登陆
-    // if()
-
+    let {history} = props;
+    if(!props.commons.user_state){
+      let {pathname} = this.props.location;
+      if(pathname !== '/login'){
+        history.push('/login')
+      }
+    }
+  }
+  componentWillMount() {
+    this.props.commons_action.checkSession(() => {
+      this.checkout(this.props)
+    })
   }
   render() {
     return (
@@ -23,4 +36,4 @@ class App extends Component {
   }
 }
 
-export default <withRouter>connect(<App/>)</withRouter>;
+export default withRouter(connect(App,'commons'))

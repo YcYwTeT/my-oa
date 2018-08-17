@@ -53,7 +53,6 @@ let _connect = (UIComponent,...reducerObtions) => {
                 }
             }
         })
-
         return actions
     }
 

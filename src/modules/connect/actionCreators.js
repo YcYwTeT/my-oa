@@ -1,7 +1,7 @@
-import todolist from '../../store/todolist/actionCreator';
+import commons from '../../store/commons/actionCreator';
 
 let actionCreators = {
-    todolist
+    commons
 }
 
 export default actionCreators;

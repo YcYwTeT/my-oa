@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
@@ -21,6 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 =======
+=======
+>>>>>>> b8c1c41c95fa9b39db60f90e4335aa2fa1761ae8
 # Logs
 logs
 *.log
@@ -82,4 +85,7 @@ typings/
 
 # next.js build output
 .next
+<<<<<<< HEAD
 >>>>>>> 7bd06c80ba5aab86027316df5d7ac168126cc00f
+=======
+>>>>>>> b8c1c41c95fa9b39db60f90e4335aa2fa1761ae8
