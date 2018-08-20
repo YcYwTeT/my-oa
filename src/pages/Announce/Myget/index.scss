@@ -1,0 +1,31 @@
+.ant-list-item-meta{
+    flex: 0.4;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.ant-list-item-content{
+    justify-content: flex-start;
+}
+.ant-list-item-action{
+    // margin: 0;
+}
+.ant-list-pagination{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.ant-list-item-content{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.ant-modal-wrap{
+    overflow: hidden;
+    .ant-modal{
+        top: 30px;
+    }
+}
+.ant-list-item{
+    padding: 5px 0px;
+}

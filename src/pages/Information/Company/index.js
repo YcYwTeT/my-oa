@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './index.scss'
 
-
 class Company extends React.Component {
   state = {
     collapsed: false,

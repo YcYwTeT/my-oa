@@ -10,12 +10,12 @@ class NavLeft extends Component{
         super(props)
         this.handleClick = this.handleClick.bind(this)
         this.renderMenus = this.renderMenus.bind(this)
-        this.handleOpenKey = this.handleOpenKey.bind(this)
+        this.state = {
+            collapsed: false,
+            openKeys: [this.handleOpenKey()]
+        }
+       
     }
-    state = {
-        collapsed: false,
-        openKey: this.handleOpenKey(),
-    };
     onCollapse = (collapsed) => {
         this.setState({ collapsed });
     }
@@ -24,29 +24,34 @@ class NavLeft extends Component{
     }
     handleOpenKey(){
         let {pathname} = this.props.location;
-        let {commons} = this.props;
-        console.log(this.props)
-        if(!commons) return false;
-        console.log(111)
+        let {menus} = this.props;
+        if(!menus) return '1'
+        let {result} = this.props.menus;
+        for(var i = 0; i < result.length; i++){
+            if(result[i].path === pathname){
+                this.setState({
+                    openKeys: result[i].type_id - 1
+                })
+            }
+        }
     } 
     shouldComponentUpdate(props){
         if(props.location.pathname === this.props.location.pathname && this.props.menus){
             return false
         }
-        console.log(1)
         return true;
     }
     renderMenus(){
-        let { result } = this.props.menus || [];
-        let { menus_type_arr } = this.props.menus || [];
-        console.log(this.props.location.pathname)
+        if(!this.props.menus) return '';
+        let { result } = this.props.menus;
+        let { menus_type_arr } = this.props.menus;
         return (<Sider
         collapsible
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse} 
         >
             <div className="logo" />
-            <Menu theme="dark" defaultSelectedKeys={[this.props.location.pathname] || ['0']}      defaultOpenKeys={[String(this.state.key)] || ['0']} mode="inline">
+            <Menu theme="dark" defaultSelectedKeys={['/']} mode="inline">
                 {
                     !menus_type_arr ? '' : menus_type_arr.map(item => {
                         for(var i = 0; i < result.length; i++ ){
@@ -61,7 +66,7 @@ class NavLeft extends Component{
                                 } else {
                                     return (
                                         <SubMenu
-                                        key={item.id}
+                                        key={item.id} onTitleClick={this.onTitleClick}
                                         title={<span><Icon type="team" /><span>{item.type}</span></span>}
                                         onTitleClick = {this.onTitleClick}
                                         >
@@ -94,4 +99,6 @@ class NavLeft extends Component{
 }
 
 
+
 export default withRouter(NavLeft);
+

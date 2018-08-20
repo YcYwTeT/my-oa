@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react';
-import { Layout, Menu, Icon, Breadcrumb } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import NavLeft from './components/NavLeft';
 import connect from '../src/modules/connect';
-import Routers from './router/Routers';
+import BreadCrumb from './components/Breadcrumb'
 const { Header, Content, Footer } = Layout;
 
 
@@ -13,6 +13,9 @@ class Admin extends Component {
     let { getMenus } = this.props.commons_action;
     getMenus();
   }
+  componentWillReceiveProps(){
+
+  }
   render() {
     let {menus} = this.props.commons;
     return (
@@ -21,15 +24,13 @@ class Admin extends Component {
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }} />
           <Content style={{ margin: '0 16px' ,height: '100%',boxSizing: 'border-box'}}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 ,}}>
+            <BreadCrumb style={{ margin: '16px 0' }} menus={menus}>
+            </BreadCrumb>
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 , height: 480 , position: 'relative'}}> 
               {this.props.children}
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
+          <Footer style={{ textAlign: 'center' ,paddingTop: 16, paddingBottom: 16}}>
             Ant Design ©2018 Created by Ant UED
           </Footer>
         </Layout>
